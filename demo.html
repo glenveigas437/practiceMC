@@ -9,10 +9,16 @@
       ws.onmessage = (event) => {
         if (event.data === 'ping') {
           ws.send('pong')
-          return
+          return 
         }
         document.getElementById('logs').innerHTML += event.data
+        if(document.getElementById('logs').innerHTML.split('\n').length>10){
+            x=document.getElementById('logs').innerHTML.split('\n').length - 10
+            for(let i=0; i<x; i++){
+              document.getElementById('logs').innerHTML = document.getElementById('logs').innerHTML.substring(document.getElementById('logs').innerHTML.indexOf("\n") + 1);
+        }
       }
+    }
     </script>
   </body>
 </html>
